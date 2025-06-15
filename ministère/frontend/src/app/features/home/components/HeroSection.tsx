@@ -12,7 +12,6 @@ export default function IntroSection({ evenement }: IntroSectionProps) {
                     src="/header.jpeg" 
                     alt="Bannière de l'événement"
                     className="w-full h-[600px] object-cover rounded-md shadow"
-
                 />
             </div>
 
@@ -32,21 +31,14 @@ export default function IntroSection({ evenement }: IntroSectionProps) {
                 </div>
             </section>
 
-
-
-
             <section className="max-w-6xl mx-auto px-4 py-4 text-left">
                 {evenement?.description && (
                     <div
-                    className="text-justify"
-                    dangerouslySetInnerHTML={{ __html: evenement.description }}
+                        className="text-justify"
+                        dangerouslySetInnerHTML={{ __html: evenement.description }}
                     />
                 )}
             </section>
-
-            
         </>
-       
     );
 }
-  

@@ -33,7 +33,6 @@ class Invite
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['evenement:read'])]
     private ?string $biographie = null;
 
     /**

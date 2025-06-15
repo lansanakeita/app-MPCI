@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Uid\Ulid;
 
 final class EvenementController extends AbstractController
 {
@@ -54,6 +55,32 @@ final class EvenementController extends AbstractController
     }
 
 
+    /**
+     * 
+     * 
+     */
+    // #[Route('/evenement/{id}', methods: ['GET'])]
+    #[Route('/evenement/{id}', methods: ['GET'], requirements: ['id' => '[0-9A-HJKMNP-TV-Z]{26}'])]
+    public function getEvenementById(string $id): JsonResponse
+    {
+        try {
+            $ulid = new Ulid($id);
+        } catch (\InvalidArgumentException $e) {
+            return $this->json(['message' => 'ID invalide'], 400);
+        }
     
+        $evenement = $this->evenementRepository->find($ulid);
+    
+        if (!$evenement) {
+            return $this->json(['message' => 'Événement non trouvé'], 404);
+        }
+    
+        return $this->json(
+            ['evenement' => $evenement],
+            200,
+            [],
+            ['groups' => 'evenement:read']
+        );
+    }
 
 }

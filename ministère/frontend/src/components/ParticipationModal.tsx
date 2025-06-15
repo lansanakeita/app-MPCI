@@ -1,6 +1,8 @@
 // components/ParticipationModal.tsx
-import { Modal, Form, Input, message } from "antd";
+
 import { useState } from "react";
+import { Modal, Form, Input, message } from "antd";
+import apiFetch from "@/lib/api";
 
 type Props = {
     visible: boolean;
@@ -10,19 +12,28 @@ type Props = {
 
 export default function ParticipationModal({ visible, onClose, eventId }: Props) {
     const [form] = Form.useForm();
+    const [loading, setLoading] = useState(false);
 
-    const handleOk = () => {
-        form.validateFields()
-            .then((values) => {
-                // Exemple de traitement
-                console.log("Participation submitted:", { ...values, eventId });
-                message.success("Participation enregistrée !");
-                form.resetFields();
-                onClose();
-            })
-            .catch(() => {
-                message.error("Veuillez remplir tous les champs correctement.");
+    const handleOk = async () => {
+        try {
+            const values = await form.validateFields();
+            setLoading(true);
+
+            const payload = { ...values, evenement: eventId };
+
+            await apiFetch("/evenement/inscription", {
+                method: "POST",
+                body: JSON.stringify(payload),
             });
+
+            message.success("Participation enregistrée !");
+            form.resetFields();
+            onClose();
+        } catch (error) {
+            message.error("Une erreur est survenue. Veuillez réessayer.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (

@@ -10,6 +10,7 @@ import {
 import moment from "moment";
 import { EvenementDTO } from "../types";
 import ParticipationModal from "@/components/ParticipationModal";
+import Link from "next/link";
 
 type Props = {
     evenement: EvenementDTO;
@@ -42,21 +43,16 @@ export default function PanelSectionAdapted({ evenement }: Props) {
                     {evenement.adresse}, {evenement.ville} - {evenement.pays}
                     </span>
                 </div>
-                <Button type="default" onClick={() => setModalVisible(true)}>Participer</Button>
-                {/* <input 
-                    type="button" 
-                    value="Participer" 
-                    onClick={() => setModalVisible(true)}
-                    style={{ border: '2px solid red', zIndex: 999 }} 
-                /> */}
-                {/* <input
-                    type="button"
-                    value="Participer"
-                    onClick={() => setModalVisible(true)}
-                    className="px-4 py-1 text-sm text-black bg-white border border-gray-300 rounded-full cursor-pointer hover:bg-gray-100 transition"
-                /> */}
+                <Button type="primary" onClick={() => setModalVisible(true)}>Participer</Button>
+                {/* <button className="bg-ministere-blue-hover text-white py-2 px-4 rounded text-sm " onClick={() => setModalVisible(true)}>
+                    Participer
+                </button> */}
+{/* 
+                <button className="bg-blue-600 text-white py-2 px-4 rounded text-sm">
+  Participer
+</button> */}
 
-
+                
 
             </div>
 
@@ -100,6 +96,12 @@ export default function PanelSectionAdapted({ evenement }: Props) {
                         </div>
                         </div>
                     ))}
+
+                    <Link href={`/evenements/${evenement.id}`} className="mt-auto">
+                        <button className="bg-ministere-blue-hover text-white py-2 px-4 rounded text-sm">
+                            Détails
+                        </button>
+                    </Link>
 
                     {panels.length > 2 && (
                         <div className="text-center py-3">

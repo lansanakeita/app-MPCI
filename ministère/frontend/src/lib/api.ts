@@ -12,6 +12,8 @@ async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise
   });
 
   if (!res.ok) {
+    const errorText = await res.text(); // Lire le corps de la réponse d'erreur
+    console.error(`Erreur API ${endpoint}:`, res.status, errorText);
     throw new Error(`Erreur lors de l'appel à ${endpoint}`);
   }
 
