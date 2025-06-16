@@ -34,48 +34,34 @@ export default async function EvenementDetailPage({ params }: Props) {
       {evenement.panels.map((panel, index) => (
         <div key={panel.id} className="mt-10 border-t pt-6">
           <h2 className="text-xl font-bold text-gray-800">Panel {index + 1} : {panel.titre}</h2>
-          <p className="text-sm text-gray-500 mt-1">{new Date(panel.date).toLocaleDateString()}</p>
+          <p className="text-sm text-gray-450 mt-1">{new Date(panel.date).toLocaleDateString()}</p>
 
           {/* Modérateur */}
           <div className="mt-4">
             <h3 className="font-semibold text-gray-700">Modérateur</h3>
             <div className="flex items-center mt-2 space-x-4">
-              {panel?.moderateur?.photoUrl ? (
-                <Image
-                  src={panel.moderateur.photoUrl}
-                  alt={panel.moderateur.nom}
-                  width={50}
-                  height={55}
-                  className="rounded-full object-cover"
-                />
+            {panel?.moderateur?.photoUrl ? (
+                <div className="relative w-[45px] h-[45px]">
+                  <Image
+                    src={panel.moderateur.photoUrl}
+                    alt={panel.moderateur.nom}
+                    fill
+                    className="rounded-full object-cover"
+                  />
+                </div>
               ) : (
                 <Avatar
                   icon={<UserOutlined />}
-                  size={50}
-                  className="bg-gray-100 text-gray-500"
+                  size={45}
+                  className="bg-gray-100 text-gray-450"
                 />
               )}
+             
               <div>
                 <p className="font-medium">{panel?.moderateur?.nom}</p>
                 <p className="text-sm text-gray-600">{panel?.moderateur?.poste}</p>
               </div>
             </div>
-
-            {/* <div className="flex items-center mt-2 space-x-4">
-              {panel?.moderateur?.photoUrl && (
-                <Image
-                  src={panel.moderateur.photoUrl}
-                  alt={panel.moderateur.nom}
-                  width={50}
-                  height={55}
-                  className="rounded-full object-cover"
-                />
-              )}
-              <div>
-                <p className="font-medium">{panel?.moderateur?.nom}</p>
-                <p className="text-sm text-gray-600">{panel?.moderateur?.poste}</p>
-              </div>
-            </div> */}
           </div>
 
           {/* Panelistes */}
@@ -85,18 +71,20 @@ export default async function EvenementDetailPage({ params }: Props) {
               {panel.panelistes.map((p) => (
                 <div key={p.id} className="flex items-center space-x-4">
                   {p.photoUrl ? (
-                    <Image
-                      src={p.photoUrl}
-                      alt={p.nom}
-                      width={50}
-                      height={55}
-                      className="rounded-full object-cover"
-                    />
+                    <div className="relative w-[45px] h-[45px]">
+                      <Image
+                        src={p.photoUrl}
+                        alt={p.nom}
+                        fill
+                        sizes="50px"
+                        className="rounded-full object-cover"
+                      />
+                    </div>
                   ) : (
                     <Avatar
                       icon={<UserOutlined />}
-                      size={50}
-                      className="bg-gray-100 text-gray-500"
+                      size={45}
+                      className="bg-gray-100 text-gray-450"
                     />
                   )}
                   <div>
@@ -105,25 +93,6 @@ export default async function EvenementDetailPage({ params }: Props) {
                   </div>
                 </div>
               ))}
-
-              {/* {panel.panelistes.map((p) => (
-                <div key={p.id} className="flex items-center space-x-4">
-                  {p.photoUrl && (
-                    <Image
-                      src={p.photoUrl}
-                      alt={p.nom}
-                      width={50}
-                      height={55}
-                      className="rounded-full object-cover"
-                    />
-
-                  )}
-                  <div>
-                    <p className="font-medium">{p.nom}</p>
-                    <p className="text-sm text-gray-600">{p.poste}</p>
-                  </div>
-                </div>
-              ))} */}
             </div>
           </div>
 
@@ -135,13 +104,15 @@ export default async function EvenementDetailPage({ params }: Props) {
                 {panel.conferenciers.map((c) => (
                   <div key={c.id} className="flex items-center space-x-4">
                     {c.photoUrl ? (
-                      <Image
-                        src={c.photoUrl}
-                        alt={c.nom}
-                        width={55}
-                        height={55}
-                        className="rounded-full object-cover"
-                      />
+                      <div className="relative w-[50px] h-[50px]">
+                        <Image
+                          src={c.photoUrl}
+                          alt={c.nom}
+                          fill
+                          sizes="50px"
+                          className="rounded-full object-cover"
+                        />
+                      </div>
                     ) : (
                       <Avatar
                         icon={<UserOutlined />}
@@ -155,24 +126,6 @@ export default async function EvenementDetailPage({ params }: Props) {
                     </div>
                   </div>
                 ))}
-
-                {/* {panel.conferenciers.map((c) => (
-                  <div key={c.id} className="flex items-center space-x-4">
-                    {c.photoUrl && (
-                      <Image
-                        src={c.photoUrl}
-                        alt={c.nom}
-                        width={55}
-                        height={55}
-                        className="rounded-full"
-                      />
-                    )}
-                    <div>
-                      <p className="font-medium">{c.nom}</p>
-                      <p className="text-sm text-gray-600">{c.poste}</p>
-                    </div>
-                  </div>
-                ))} */}
               </div>
             </div>
           )}
