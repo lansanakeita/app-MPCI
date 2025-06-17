@@ -16,10 +16,6 @@ use Symfony\Component\Uid\Ulid;
 #[Vich\Uploadable]
 class Evenement
 {
-
-    // #[ORM\Id]
-    // #[ORM\GeneratedValue]
-    // #[ORM\Column]
     #[ORM\Id]
     #[ORM\Column(type: 'ulid', unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
