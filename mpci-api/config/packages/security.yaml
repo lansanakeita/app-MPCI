@@ -37,11 +37,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/mpci-administrateur, roles: ROLE_USER }
-        - { path: ^/api/evenements, roles: ROLE_USER }
-        - { path: ^/api/evenement/actif, roles: ROLE_USER }
-        - { path: ^/api/evenement/[^/]+$, roles: ROLE_USER }
+        - { path: ^/api/evenements, roles: PUBLIC_ACCESS }
+        - { path: ^/api/evenement/actif, roles: PUBLIC_ACCESS }
+        - { path: ^/api/evenement/[^/]+$, roles: PUBLIC_ACCESS }
+        - { path: ^/evenement/inscription, roles: PUBLIC_ACCESS }
+        - { path: ^/api/invite/[^/]+$, roles: PUBLIC_ACCESS }
 
 
 when@test:

@@ -11,16 +11,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use Symfony\Component\HttpFoundation\Response;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-
-
-
+use Symfony\Component\HttpFoundation\Response;
 
 #[AdminDashboard(routePath: '/mpci-administrateur', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+
     private $adminUrlGenerator;
 
 
@@ -28,6 +25,7 @@ class DashboardController extends AbstractDashboardController
     {
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
+
 
     public function index(): Response
     {
@@ -37,9 +35,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-        ->setTitle('<img src="/assets/images/logo.jpg" alt="Logo" style="height:70px;">');
-
-            //->setTitle('Guinea Api');
+            ->setTitle('<img src="/assets/images/logo.jpg" alt="Logo" style="height:70px;">');
     }
 
     public function configureMenuItems(): iterable
@@ -49,11 +45,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Participants', 'fas fa-user', Participant::class);
         yield MenuItem::linkToCrud('Panels', 'fas fa-list', Panel::class);
         yield MenuItem::linkToCrud('utilisateurs', 'fas fa-user', Utilisateur::class);
-    }
-
-    public function configureAssets(): Assets
-    {
-        return Assets::new()
-            ->addCssFile('assets/styles/app.css');
     }
 }
