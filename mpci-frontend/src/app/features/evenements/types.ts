@@ -31,9 +31,8 @@ export interface EvenementDTO {
   pays:string;
   description?: string;
   adresse?: string;
-  image?: string;
   imageUrl?: string;
-  videoUrl?: string;
+  lienVideo?: string;
   panels: Panel[];
   programmeImages: ProgrammeImage[];
 }

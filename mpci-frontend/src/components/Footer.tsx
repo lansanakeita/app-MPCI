@@ -24,10 +24,18 @@ export default function Footer() {
                     <a href="#" className="hover:text-gray-300">Facebook</a>
                 </div>
             </div>
-
             <div className="relative z-10 mt-8 text-center text-sm border-t border-white/20 pt-4">
-                © 2025 MPCI | Tous droits réservés.  Développé par <span className="text-pink-500 font-bold">Lansana KEITA</span>
+                © 2025 MPCI | Tous droits réservés. Développé par{" "}
+                <a
+                    href="https://www.linkedin.com/in/lansana-keita-3b670018b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-300 font-bold underline hover:text-yellow-300 transition"
+                >
+                    Lansana KEITA
+                </a>
             </div>
+
         </footer>
     );
 }

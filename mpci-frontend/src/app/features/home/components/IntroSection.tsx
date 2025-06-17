@@ -22,20 +22,6 @@ export default function IntroSection({ evenement }: IntroSectionProps) {
                 {evenement?.titre}
             </h1>
 
-            {evenement?.videoUrl && (
-                <section className=" mx-auto px-4 py-6">
-                    <div className="aspect-video rounded-md overflow-hidden shadow-lg">
-                        <iframe
-                            className="w-full h-full"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                            title="Test YouTube Video"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                </section>
-            )}
-
             <section className="max-w-6xl mx-auto px-4 py-4 text-left">
                 {evenement?.description && (
                     <div
@@ -44,6 +30,19 @@ export default function IntroSection({ evenement }: IntroSectionProps) {
                     />
                 )}
             </section>
+            {evenement?.lienVideo && (
+                <section className="mx-auto px-4 py-6">
+                    <div className="aspect-video rounded-md overflow-hidden shadow-lg">
+                    <iframe
+                        className="w-full h-full"
+                        src={evenement.lienVideo} 
+                        title="Vidéo de l'événement"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                    </div>
+                </section>
+            )}
         </>
     );
 }
