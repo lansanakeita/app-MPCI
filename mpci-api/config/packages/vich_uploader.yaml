@@ -1,0 +1,19 @@
+vich_uploader:
+   db_driver: orm
+
+   mappings:
+      evenement_image:
+         uri_prefix: /uploads/evenements
+         upload_destination: '%kernel.project_dir%/public/uploads/evenements'
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           
+      invite_photo:
+         uri_prefix: /uploads/invites
+         upload_destination: '%kernel.project_dir%/public/uploads/invites'
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+      programme_image:
+         uri_prefix: /uploads/programmes
+         upload_destination: '%kernel.project_dir%/public/uploads/programmes'
+         namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+

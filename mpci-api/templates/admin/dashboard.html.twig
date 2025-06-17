@@ -1,0 +1,33 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+
+
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h1 class="mb-3">Bienvenue {{ app.user.userIdentifier }} 👋</h1>
+            <p class="text-muted">Voici les chiffres clés de votre plateforme.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Utilisateurs enregistrés</h5>
+                        <p class="display-6">{{ nbUtilisateurs }}</p>
+                        {# <a href="{{ path('admin', { entity: 'Utilisateur' }) }}" class="btn btn-outline-success btn-sm">Voir</a>  #}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Évènements créés</h5>
+                        <p class="display-6">{{ nbEvenements }}</p>
+                        {# <a href="{{ path('admin', { entity: 'Evenement' }) }}" class="btn btn-outline-success btn-sm">Voir</a>  #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
