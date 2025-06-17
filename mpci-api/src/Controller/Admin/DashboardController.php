@@ -11,23 +11,31 @@ use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 
 #[AdminDashboard(routePath: '/mpci-administrateur', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
 
+    private $adminUrlGenerator;
+
+
+    public function __construct(AdminUrlGenerator $adminUrlGenerator)
+    {
+        $this->adminUrlGenerator = $adminUrlGenerator;
+    }
+
 
     public function index(): Response
     {
-        return parent::index();
+        return $this->redirect($this->adminUrlGenerator->setController(EvenementCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
             ->setTitle('<img src="/assets/images/logo.jpg" alt="Logo" style="height:70px;">');
-
     }
 
     public function configureMenuItems(): iterable
