@@ -360,14 +360,6 @@ class Evenement
         return $this;
     }
 
-    // #[Groups(['evenement:read'])]
-    // public function getImageUrl(): ?string
-    // {
-    //     return $this->image
-    //     ? 'http://localhost:8000/uploads/evenements/' . $this->image
-    //     : null;
-    // }
-
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;

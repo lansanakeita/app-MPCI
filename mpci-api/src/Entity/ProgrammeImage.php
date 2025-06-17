@@ -93,7 +93,7 @@ class ProgrammeImage
     public function getProgrammeImageUrl(): ?string
     {
         return $this->image
-        ? 'http://localhost:8000/uploads/programmes/' . $this->image
+        ? 'https://api.j-pci.com/uploads/programmes/' . $this->image
         : null;
     }
 }
