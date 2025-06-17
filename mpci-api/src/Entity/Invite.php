@@ -158,7 +158,7 @@ class Invite
     public function getPhotoUrl(): ?string
     {
         return $this->photo
-        ? 'http://localhost:8000/uploads/invites/' . $this->photo
+        ? 'https://api.j-pci.com/uploads/invites/' . $this->photo
         : null;
     }
 

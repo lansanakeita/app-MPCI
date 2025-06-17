@@ -2,10 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\EtapeEvenement;
 use App\Entity\Evenement;
 use App\Entity\Invite;
-use App\Entity\JourEvenement;
 use App\Entity\Panel;
 use App\Entity\Participant;
 use App\Entity\Utilisateur;
@@ -20,7 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 
 
-#[AdminDashboard(routePath: '/guinee-administrateur', routeName: 'admin')]
+#[AdminDashboard(routePath: '/mpci-administrateur', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
     private $adminUrlGenerator;
@@ -46,10 +44,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Evenements', 'fas fa-chalkboard', Evenement::class);
-        // yield MenuItem::linkToCrud('Nombre de Jours', 'fas fa-calendar-day', JourEvenement::class);
-        // yield MenuItem::linkToCrud('Étapes', 'fas fa-stream', EtapeEvenement::class);
-       
+        yield MenuItem::linkToCrud('Evenements', 'fas fa-chalkboard', Evenement::class);       
         yield MenuItem::linkToCrud('Invités', 'fas fa-user', Invite::class);
         yield MenuItem::linkToCrud('Participants', 'fas fa-user', Participant::class);
         yield MenuItem::linkToCrud('Panels', 'fas fa-list', Panel::class);
