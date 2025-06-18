@@ -12,6 +12,9 @@ import { EvenementDTO } from "../types";
 import ParticipationModal from "@/components/ParticipationModal";
 import Button from "@/components/Button";
 
+import 'moment/locale/fr';
+moment.locale('fr');
+
 type Props = {
     evenement: EvenementDTO;
 };
@@ -32,8 +35,8 @@ export default function PanelSectionAdapted({ evenement }: Props) {
                 <div className="flex items-center gap-2">
                 <CalendarOutlined />
                 <span>
-                    {moment(evenement.dateDebut).format("DD MMM")} –{" "}
-                    {moment(evenement.dateFin).format("DD MMM YYYY")}
+                    {moment(evenement.dateDebut).format('dddd D MMMM YYYY')} –{" "}
+                    {moment(evenement.dateFin).format('dddd D MMMM YYYY')}
                 </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -98,12 +101,11 @@ export default function PanelSectionAdapted({ evenement }: Props) {
                             >
                                 {showAll ? (
                                 <>
-                                    <UpOutlined className="mr-1" /> Replier les panels
+                                    <UpOutlined className="mr-1" /> Replier
                                 </>
                                 ) : (
                                 <>
                                     +{panels.length - 2} autre{panels.length > 3 ? "s" : ""}{" "}
-                                        panel
                                     <DownOutlined className="ml-1" />
                                 </>
                                 )}

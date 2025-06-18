@@ -23,7 +23,7 @@ export default function EvenementSection() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [toast]);
 
 
   if (loading) return <p className="text-center py-10 text-link">Chargement...</p>;

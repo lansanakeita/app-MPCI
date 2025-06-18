@@ -1,20 +1,32 @@
 import Image from "next/image";
-import { EvenementDTO } from "../../evenements/types"; 
+import { EvenementDTO } from "../../evenements/types";
 
 interface IntroSectionProps {
   evenement?: EvenementDTO;
 }
 
+// Formatage 
+const getYouTubeEmbedUrl = (url?: string | null): string | undefined => {
+if (!url) return undefined;
+const match = url.match(/(?:\?v=|\/embed\/|\.be\/)([^&\n?#]+)/);
+return match ? `https://www.youtube.com/embed/${match[1]}?playsinline=1` : undefined;
+};
+  
 export default function IntroSection({ evenement }: IntroSectionProps) {
+    const embedUrl = getYouTubeEmbedUrl(evenement?.lienVideo);
+
     return (
         <>
-            <div className="max-w-6xl mx-auto mt-2">
+
+
+            <div className="relative w-full max-w-6xl h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] mx-auto px-2 py-2 mt-2">
                 <Image
-                    src="/header.jpeg" 
+                    src="/header.jpeg"
                     alt="Bannière de l'événement"
-                    className="w-full h-[600px] object-cover rounded-md shadow"
-                    width={600}
-                    height={600}
+                    fill
+                    className="object-cover object-top rounded-md"
+
+                    priority
                 />
             </div>
 
@@ -31,15 +43,15 @@ export default function IntroSection({ evenement }: IntroSectionProps) {
                 )}
             </section>
             {evenement?.lienVideo && (
-                <section className="mx-auto px-4 py-6">
-                    <div className="aspect-video rounded-md overflow-hidden shadow-lg">
-                    <iframe
-                        className="w-full h-full"
-                        src={evenement.lienVideo} 
-                        title="Vidéo de l'événement"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+                <section className="w-full px-4 py-6">
+                    <div className="max-w-2xl mx-auto aspect-video rounded-md overflow-hidden shadow-lg">
+                        <iframe
+                            className="w-full h-full"
+                            src={embedUrl}
+                            title="Vidéo de l'événement"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
                     </div>
                 </section>
             )}

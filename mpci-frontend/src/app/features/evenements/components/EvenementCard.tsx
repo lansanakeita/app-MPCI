@@ -1,16 +1,12 @@
-
 import Link from 'next/link';
+import { EvenementDTO } from '../types';
 
-export interface Evenement {
-  id: string;
-  titre: string;
-  description?: string;
-  dateDebut: string;
-  lieu?: string;
-  imageUrl?: string;
-}
+import moment from 'moment';
+import 'moment/locale/fr';
 
-export default function EvenementCard({ evenement }: { evenement: Evenement }) {
+moment.locale('fr');
+
+export default function EvenementCard({ evenement }: { evenement: EvenementDTO }) {
     return (
       <div className="bg-white shadow-md rounded overflow-hidden flex flex-col">
         <div className="p-4 flex flex-col flex-1">
@@ -18,13 +14,11 @@ export default function EvenementCard({ evenement }: { evenement: Evenement }) {
             {evenement.titre}
           </h3>
           <p className="text-sm text-gray-600 mb-2">
-            {new Date(evenement.dateDebut).toLocaleDateString('fr-FR', {
-              weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-            })}
+            {moment(evenement.dateDebut).format('dddd D MMMM YYYY')}
           </p>
-          {evenement.lieu && (
+          {evenement.adresse && (
             <p className="text-sm text-gray-500 mb-4">
-              📍 {evenement.lieu}
+              📍 {evenement.adresse}
             </p>
           )}
           <Link href={`/evenements/${evenement.id}`} className="mt-auto">

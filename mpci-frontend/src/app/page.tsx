@@ -42,7 +42,7 @@ export default function Home() {
       .catch(() => {
           toast({ type: 'error', message: ' Erreur lors de la récupération des événements.' });
       })
-  }, []);
+  }, [toast]);
 
   return (
      <Suspense fallback={

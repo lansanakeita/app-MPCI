@@ -18,7 +18,12 @@ export default function Button({
   className = '',
   type = 'button',
 }: ButtonProps) {
-  const baseStyle = `h-10 px-5 text-sm font-medium rounded inline-flex items-center justify-center cursor-pointer`;
+  const baseStyle = `h-10 w-[120px] px-5 text-sm font-medium rounded inline-flex items-center justify-center cursor-pointer`;
+
+  // const variants = {
+  //   primary: `bg-ministere-blue-hover text-white hover:bg-ministere-blue`,
+  //   secondary: `bg-gray-200 text-gray-800 hover:bg-gray-300`,
+  // };
 
   const variants = {
     primary: `bg-ministere-blue-hover text-white hover:bg-ministere-blue`,
