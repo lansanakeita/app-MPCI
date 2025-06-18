@@ -45,27 +45,12 @@ export default function ProgrammeCarousel({ images }: ProgrammeCarouselProps) {
             ))}
         </Carousel>
 
-
       <div className="flex justify-center mt-6 gap-6">
-        {/* <button
-          onClick={() => carouselRef.current?.prev()}
-          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded"
-        >
-          Précédent
-        </button>
-        <button
-          onClick={() => carouselRef.current?.next()}
-          className="px-4 py-2 bg-ministere-blue-hover text-white rounded"
-        >
-          Suivant
-        </button> */}
 
-        <Button variant="secondary" onClick={() => carouselRef.current?.prev()}>Précédent</Button>
+        <Button variant="primary" onClick={() => carouselRef.current?.prev()}>Précédent</Button>
 
         <Button variant="primary" onClick={() => carouselRef.current?.next()}>Suivant</Button>
-    </div>
-
-
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { fetchEvenementById } from '@/app/features/evenements/api';
 import Image from 'next/image';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { fetchEvenementById } from '@/app/features/evenements/api';
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -47,7 +47,11 @@ export default async function EvenementDetailPage(props: Props) {
                   className="rounded-full object-cover"
                 />
               ) : (
-                <Avatar icon={<UserOutlined />} size={45} className="bg-gray-100 text-gray-450" />
+                <Avatar
+                  icon={<UserOutlined />}
+                  size={45}
+                  className="bg-gray-100 text-gray-450 min-w-[45px] w-[45px] h-[45px]"
+                />
               )}
               <div>
                 <p className="font-medium">{panel.moderateur?.nom}</p>
@@ -62,15 +66,19 @@ export default async function EvenementDetailPage(props: Props) {
               {panel.panelistes.map((p) => (
                 <div key={p.id} className="flex items-center space-x-4">
                   {p.photoUrl ? (
-                    <Image
-                      src={p.photoUrl}
-                      alt={p.nom}
-                      width={45}
-                      height={45}
-                      className="rounded-full object-cover"
-                    />
+                   <Image
+                   src={p.photoUrl}
+                   alt={p.nom}
+                   width={45}
+                   height={45}
+                   className="rounded-full object-cover w-[45px] h-[45px] min-w-[45px]"
+                 />
                   ) : (
-                    <Avatar icon={<UserOutlined />} size={45} className="bg-gray-100 text-gray-450" />
+                    <Avatar
+  icon={<UserOutlined />}
+  size={45}
+  className="bg-gray-100 text-gray-450 min-w-[45px] w-[45px] h-[45px]"
+/>
                   )}
                   <div>
                     <p className="font-medium">{p.nom}</p>
@@ -91,12 +99,16 @@ export default async function EvenementDetailPage(props: Props) {
                       <Image
                         src={c.photoUrl}
                         alt={c.nom}
-                        width={50}
-                        height={50}
-                        className="rounded-full object-cover"
+                        width={45}
+                   height={45}
+                   className="rounded-full object-cover w-[45px] h-[45px] min-w-[45px]"
                       />
                     ) : (
-                      <Avatar icon={<UserOutlined />} size={50} className="bg-gray-100 text-gray-500" />
+                      <Avatar
+                      icon={<UserOutlined />}
+                      size={45}
+                      className="bg-gray-100 text-gray-450 min-w-[45px] w-[45px] h-[45px]"
+                    />
                     )}
                     <div>
                       <p className="font-medium">{c.nom}</p>

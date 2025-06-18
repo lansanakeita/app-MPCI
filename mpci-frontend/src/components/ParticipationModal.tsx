@@ -102,7 +102,7 @@ export default function ParticipationModal({ visible, onClose, eventId }: Props)
 
                             {/* Footer buttons */}
                             <div className="mt-6 flex justify-end gap-4">
-                                <Button variant="secondary" onClick={onClose}>Fermer</Button>
+                                <Button variant="primary" onClick={onClose}>Fermer</Button>
 
                                 <Button variant="primary" onClick={handleSubmit}>Valider</Button>
                             </div>
